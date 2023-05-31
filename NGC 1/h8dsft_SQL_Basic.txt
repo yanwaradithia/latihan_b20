@@ -1,7 +1,7 @@
 query untuk Q1
 
 select 
-  trips.trip_id, trips.start_date as year, trips.subscriber_type, trips.start_station_name, trips.start_station_id, station.name, station.landmark
+  count(trips.trip_id) as banyak_peminjaman
 from 
   `bigquery-public-data.san_francisco.bikeshare_trips` as trips
 join 
@@ -9,13 +9,13 @@ join
 on 
   trips.start_station_id = station.station_id
 where 
-  subscriber_type = 'Subscriber' and landmark = 'Redwood City' and extract(month from trips.start_date) in (01, 02, 03) and extract(year from trips.start_date) = 2016
-order by trips.start_date asc;
+  subscriber_type = 'Subscriber' and landmark = 'Redwood City' and extract(month from trips.start_date) in (01, 02, 03) and extract(year from trips.start_date) = 2016;
+
 
 query untuk Q2
 
 select 
-  trips.trip_id, trips.start_date as year, trips.subscriber_type, trips.start_station_name, trips.start_station_id, station.name, station.landmark
+  count(trips.trip_id) as banyak_peminjaman
 from 
   `bigquery-public-data.san_francisco.bikeshare_trips` as trips
 join 
@@ -23,5 +23,4 @@ join
 on 
   trips.start_station_id = station.station_id
 where 
-  subscriber_type = 'Subscriber' and landmark = 'Redwood City' and extract(month from trips.start_date) in (04, 05, 06) and extract(year from trips.start_date) = 2016
-order by trips.start_date asc;
+  subscriber_type = 'Subscriber' and landmark = 'Redwood City' and extract(month from trips.start_date) in (04, 05, 06) and extract(year from trips.start_date) = 2016;
